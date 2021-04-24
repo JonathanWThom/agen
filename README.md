@@ -1,8 +1,29 @@
 # Agen
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/agen`. To experiment with that code, run `bin/console` for an interactive prompt.
+Generate shell aliases based on commonly entered commands.
 
-TODO: Delete this and the text above, and describe your gem
+## Roadmap
+
+1. CLI will read 5 most common full commands from .zsh_history file, and create
+   an alias for them in the .zshrc file.
+   - It should not create aliases out of old aliases.
+   - It should handle a very short or shell history without many different
+      commands.
+   - It should output progress for very long/slow shell histories.
+   - It should not create the same alias for two different commands in the same
+       session.
+   - It should not create an alias that is longer than the original command.
+2. CLI will let you see proposed aliases and accept/decline them interactively.
+   OR, in "auto mode", commands will be added automatically (as in 1).
+3. CLI will let you specify number of aliases you want to create.
+4. CLI will support any (or most common) shells, and will find history and rc
+   file dynamically.
+5. CLI will let you specific which history file to read form, and which file to output aliases to.
+6. CLI will let you interactively modify proposed aliases.
+7. CLI will let you "ignore" commands you don't want to alias, forever.
+8. CLI will let you specify "meta" vs "full" commands.
+  - Full command would be `git checkout branch-name`, meta command would be
+      `git checkout`.
 
 ## Installation
 
