@@ -46,7 +46,19 @@ RSpec.describe Agen::Finder do
     end
 
     context "histfile contains a tie for entry ranking" do
-      # it goes with more recent one
+      subject { described_class.new(histfile).commands(1) }
+
+      let(:histfile) do
+        Tempfile.open do |f|
+          f.puts(": 1619292473:0;cat ~/.zsh_history")
+          f.puts(": 1619291199:0;rake standard:fix")
+          f.puts(": 1619292473:0;cat ~/.zsh_history")
+          f.puts(": 1619291199:0;rake standard:fix")
+          f
+        end
+      end
+
+      it { is_expected.to eq ["rake standard:fix"] }
     end
 
     context "limit is passed in" do
