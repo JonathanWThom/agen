@@ -60,7 +60,7 @@ RSpec.describe Agen::Runner do
         end
       end
 
-      it { is_expected.to eq "\nalias gcm=\"git checkout main\"\n" }
+      it { is_expected.to eq "alias gcm=\"git checkout main\"\n" }
     end
 
     context "rcfile has content already" do
@@ -73,7 +73,7 @@ RSpec.describe Agen::Runner do
 
       let(:rcfile) do
         Tempfile.open do |f|
-          f.write("export FOO=\"bar\"")
+          f.puts("export FOO=\"bar\"")
           f
         end
       end
@@ -92,7 +92,7 @@ RSpec.describe Agen::Runner do
 
       it do
         is_expected.to eq(
-          "\nalias bers=\"bundle exec rails s\"\nalias bi=\"bundle install\"\n"
+          "alias bers=\"bundle exec rails s\"\nalias bi=\"bundle install\"\n"
         )
       end
     end

@@ -18,11 +18,8 @@ module Agen
 
       File.open(rcfile, "a") do |file|
         aliases.each do |al|
-          file.puts
-          file << al
+          file.puts(al)
         end
-
-        file.puts
       end
     end
   end

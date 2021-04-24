@@ -1,4 +1,3 @@
-
 alias gs="git status"
 alias griom="git rebase -i origin/main"
 alias db="docker build ."
