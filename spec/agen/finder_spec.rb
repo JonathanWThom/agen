@@ -51,6 +51,21 @@ RSpec.describe Agen::Finder do
       # go with most recent
     end
 
+    context "limit is passed in" do
+      subject { described_class.new(histfile).commands(1) }
+
+      let(:histfile) do
+        Tempfile.open do |f|
+          f.write(": 1619292473:0;cat ~/.zsh_history")
+          f.puts
+          f.write(": 1619291199:0;rake standard:fix")
+          f
+        end
+      end
+
+      it { is_expected.to eq ["rake standard:fix"] }
+    end
+
     # context "histfile contains very short entries" do
     # end
 
