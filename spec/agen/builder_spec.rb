@@ -26,6 +26,9 @@ RSpec.describe Agen::Builder do
       end
     end
 
+    context "commands contain special characters" do
+    end
+
     # context "given multiple commands that could potentially shorten to the same thing" do
     # end
 

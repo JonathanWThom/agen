@@ -50,6 +50,8 @@ RSpec.describe Agen::Runner do
       ).call
     end
 
+    let(:rcfile) { Tempfile.new }
+
     context "single listing in histfile" do
       let(:histfile) do
         Tempfile.open do |f|
@@ -58,9 +60,7 @@ RSpec.describe Agen::Runner do
         end
       end
 
-      let(:rcfile) { Tempfile.new }
-
-      it { is_expected.to eq "\nalias gcm=\"git checkout main\"" }
+      it { is_expected.to eq "\nalias gcm=\"git checkout main\"\n" }
     end
 
     context "rcfile has content already" do
@@ -78,14 +78,31 @@ RSpec.describe Agen::Runner do
         end
       end
 
-      it { is_expected.to eq "export FOO=\"bar\"\nalias bi=\"bundle install\"" }
+      it { is_expected.to eq "export FOO=\"bar\"\nalias bi=\"bundle install\"\n" }
     end
 
-    # it "writes multiple aliases to .zshrc based on .zsh_history" do
-    # end
+    context "multiple aliases to .zshrc based on .zsh_history" do
+      let(:histfile) do
+        Tempfile.open do |f|
+          f.write(": 1619287607:0;bundle install")
+          f.puts
+          f.write(": 1619287607:0;bundle exec rails s")
+          f
+        end
+      end
 
-    # it "writes top 5 aliases to .zshrc based on .zsh_history" do
-    # end
+      it do
+        is_expected.to eq(
+          "\nalias bers=\"bundle exec rails s\"\nalias bi=\"bundle install\"\n"
+        )
+      end
+    end
+
+    context ".zsh_history has many entries with different frequencies" do
+      let(:histfile) { File.open("./spec/fixtures/zsh_history") }
+
+      it { is_expected.to eq File.read("./spec/fixtures/zshrc") }
+    end
 
     # it "does not write duplicate aliases in a single command" do
     # end

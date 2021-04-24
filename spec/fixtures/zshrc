@@ -1,0 +1,6 @@
+
+alias gs="git status"
+alias griom="git rebase -i origin/main"
+alias db="docker build ."
+alias bsrp="brew services restart postgres"
+alias rv="ruby -v"

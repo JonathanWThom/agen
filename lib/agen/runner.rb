@@ -21,6 +21,8 @@ module Agen
           file.puts
           file << al
         end
+
+        file.puts
       end
     end
   end

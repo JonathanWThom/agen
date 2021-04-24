@@ -31,7 +31,24 @@ RSpec.describe Agen::Finder do
         end
       end
 
-      it { is_expected.to eq ["cat ~/.zsh_history", "rake standard:fix"] }
+      it { is_expected.to eq ["rake standard:fix", "cat ~/.zsh_history"] }
+    end
+
+    context "histfile contains duplicate entries" do
+      let(:histfile) do
+        Tempfile.open do |f|
+          f.write(": 1619292473:0;rake standard:fix")
+          f.puts
+          f.write(": 1619291199:0;rake standard:fix")
+          f
+        end
+      end
+
+      it { is_expected.to eq ["rake standard:fix"] }
+    end
+
+    context "histfile contains a tie for entry ranking" do
+      # go with most recent
     end
 
     # context "histfile contains very short entries" do
