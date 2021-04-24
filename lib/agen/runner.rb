@@ -14,12 +14,7 @@ module Agen
 
     def call
       commands = Finder.new(histfile).commands
-
-      # alias builder
-      aliases = commands.map do |cmd|
-        aliaz = cmd.scan(/\b\w/).join
-        "alias #{aliaz}=\"#{cmd}\""
-      end
+      aliases = Builder.new(commands).aliases
 
       # alias writer
       File.open(rcfile, "a") do |file|
