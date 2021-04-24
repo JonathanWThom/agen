@@ -13,10 +13,7 @@ module Agen
     end
 
     def call
-      # command finder
-      commands = File.readlines(histfile).map do |line|
-        line.split(";").last
-      end
+      commands = Finder.new(histfile).commands
 
       # alias builder
       aliases = commands.map do |cmd|
@@ -24,6 +21,7 @@ module Agen
         "alias #{aliaz}=\"#{cmd}\""
       end
 
+      # alias writer
       File.open(rcfile, "a") do |file|
         aliases.each do |al|
           file.puts
