@@ -13,15 +13,16 @@ Generate shell aliases based on commonly entered commands.
    - It should not create the same alias for two different commands in the same
        session.
    - It should not create an alias that is longer than the original command.
-2. CLI will let you see proposed aliases and accept/decline them interactively.
+1. CLI will let you see proposed aliases and accept/decline them interactively.
    OR, in "auto mode", commands will be added automatically (as in 1).
-3. CLI will let you specify number of aliases you want to create.
-4. CLI will support any (or most common) shells, and will find history and rc
+1. CLI should have helpful output for `-h/--help`.
+1. CLI will let you specify number of aliases you want to create.
+1. CLI will support any (or most common) shells, and will find history and rc
    file dynamically.
-5. CLI will let you specific which history file to read form, and which file to output aliases to.
-6. CLI will let you interactively modify proposed aliases.
-7. CLI will let you "ignore" commands you don't want to alias, forever.
-8. CLI will let you specify "meta" vs "full" commands.
+1. CLI will let you specific which history file to read form, and which file to output aliases to.
+1. CLI will let you interactively modify proposed aliases.
+1. CLI will let you "ignore" commands you don't want to alias, forever.
+1. CLI will let you specify "meta" vs "full" commands.
   - Full command would be `git checkout branch-name`, meta command would be
       `git checkout`.
 
