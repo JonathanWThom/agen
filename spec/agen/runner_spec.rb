@@ -84,9 +84,8 @@ RSpec.describe Agen::Runner do
     context "multiple aliases to .zshrc based on .zsh_history" do
       let(:histfile) do
         Tempfile.open do |f|
-          f.write(": 1619287607:0;bundle install")
-          f.puts
-          f.write(": 1619287607:0;bundle exec rails s")
+          f.puts(": 1619287607:0;bundle install")
+          f.puts(": 1619287607:0;bundle exec rails s")
           f
         end
       end

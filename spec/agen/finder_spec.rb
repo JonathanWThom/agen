@@ -13,7 +13,7 @@ RSpec.describe Agen::Finder do
     context "histfile contains one entry" do
       let(:histfile) do
         Tempfile.open do |f|
-          f.write(": 1619292473:0;cat ~/.zsh_history")
+          f.puts(": 1619292473:0;cat ~/.zsh_history")
           f
         end
       end
@@ -24,9 +24,8 @@ RSpec.describe Agen::Finder do
     context "histfile contains two entries" do
       let(:histfile) do
         Tempfile.open do |f|
-          f.write(": 1619292473:0;cat ~/.zsh_history")
-          f.puts
-          f.write(": 1619291199:0;rake standard:fix")
+          f.puts(": 1619292473:0;cat ~/.zsh_history")
+          f.puts(": 1619291199:0;rake standard:fix")
           f
         end
       end
@@ -37,9 +36,8 @@ RSpec.describe Agen::Finder do
     context "histfile contains duplicate entries" do
       let(:histfile) do
         Tempfile.open do |f|
-          f.write(": 1619292473:0;rake standard:fix")
-          f.puts
-          f.write(": 1619291199:0;rake standard:fix")
+          f.puts(": 1619292473:0;rake standard:fix")
+          f.puts(": 1619291199:0;rake standard:fix")
           f
         end
       end
@@ -48,7 +46,7 @@ RSpec.describe Agen::Finder do
     end
 
     context "histfile contains a tie for entry ranking" do
-      # go with most recent
+      # it goes with more recent one
     end
 
     context "limit is passed in" do
@@ -56,9 +54,8 @@ RSpec.describe Agen::Finder do
 
       let(:histfile) do
         Tempfile.open do |f|
-          f.write(": 1619292473:0;cat ~/.zsh_history")
-          f.puts
-          f.write(": 1619291199:0;rake standard:fix")
+          f.puts(": 1619292473:0;cat ~/.zsh_history")
+          f.puts(": 1619291199:0;rake standard:fix")
           f
         end
       end
