@@ -9,7 +9,7 @@ RSpec.describe Agen::Runner do
     context "default" do
       let(:agen) { described_class.new }
 
-      it { is_expected.to eq "$HOME/.zsh_history" }
+      it { is_expected.to eq "#{Dir.home}/.zsh_history" }
     end
 
     context "alternative file supplied" do
@@ -26,7 +26,7 @@ RSpec.describe Agen::Runner do
     context "default" do
       let(:agen) { described_class.new }
 
-      it { is_expected.to eq "$HOME/.zshrc" }
+      it { is_expected.to eq "#{Dir.home}/.zshrc" }
     end
 
     context "alternative file supplied" do
