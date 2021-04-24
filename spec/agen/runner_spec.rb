@@ -37,7 +37,7 @@ RSpec.describe Agen::Runner do
     end
   end
 
-  describe "#call" do
+  describe "#run" do
     subject do
       execute!
       rcfile.open.read
@@ -47,7 +47,7 @@ RSpec.describe Agen::Runner do
       described_class.new(
         histfile: histfile.path,
         rcfile: rcfile.path
-      ).call
+      ).run
     end
 
     let(:rcfile) { Tempfile.new }

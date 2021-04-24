@@ -12,7 +12,7 @@ module Agen
       @rcfile = rcfile
     end
 
-    def call
+    def run
       commands = Finder.new(histfile).commands
       aliases = Builder.new(commands).aliases
 

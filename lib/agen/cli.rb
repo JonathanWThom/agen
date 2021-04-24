@@ -8,7 +8,7 @@ module Agen
 
     def run
       # TODO: Parse args/options
-      Runner.new.call
+      Runner.new.run
     end
   end
 end
