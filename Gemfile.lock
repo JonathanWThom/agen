@@ -54,8 +54,8 @@ PLATFORMS
 
 DEPENDENCIES
   agen!
-  rake (~> 13.0)
-  rspec (~> 3.0)
+  rake
+  rspec
   standard
 
 BUNDLED WITH
