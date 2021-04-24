@@ -17,7 +17,9 @@ module Agen
       aliases = Builder.new(commands).aliases
 
       File.open(rcfile, "a") do |file|
+        puts "Writing aliases to #{rcfile}:"
         aliases.each do |al|
+          puts al
           file.puts(al)
         end
       end
