@@ -16,7 +16,6 @@ module Agen
       commands = Finder.new(histfile).commands
       aliases = Builder.new(commands).aliases
 
-      # alias writer
       File.open(rcfile, "a") do |file|
         aliases.each do |al|
           file.puts
