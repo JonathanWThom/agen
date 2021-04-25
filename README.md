@@ -23,24 +23,16 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/Jonath
 
 ## Roadmap
 
-~~1. CLI will read 5 most common full commands from .zsh_history file, and create
-   an alias for them in the .zshrc file.~~
-   - [x] It should handle a very short or shell history without many different
-      commands.
-   - [x] It should not create the same alias for two different commands in the same
-       session.
-   - [x] It should not create aliases for very short commands.
-~~2. CLI should not duplicate aliases or commands that already exist on the system.~~
-3. CLI will let you see proposed aliases and accept/decline them interactively. Maybe auto should be the default?
+* CLI will let you see proposed aliases and accept/decline them interactively. Maybe auto should be the default?
    OR, in "auto mode", commands will be added automatically (as in 1).
-4. CLI should have helpful output for `-h/--help`.
-5. CLI will let you specify number of aliases you want to create.
-6. CLI will support any (or most common) shells, and will find history and rc
+*  CLI should have helpful output for `-h/--help`.
+* CLI will let you specify number of aliases you want to create.
+* CLI will support any (or most common) shells, and will find history and rc
    file dynamically.
-7. CLI will let you specific which history file to read form, and which file to output aliases to.
-8. CLI will let you interactively modify proposed aliases.
-9. CLI will let you "ignore" commands you don't want to alias, forever.
-10. CLI will let you specify "meta" vs "full" commands.
+* CLI will let you specific which history file to read form, and which file to output aliases to.
+* CLI will let you interactively modify proposed aliases.
+* CLI will let you "ignore" commands you don't want to alias, forever.
+* CLI will let you specify "meta" vs "full" commands.
   - Full command would be `git checkout branch-name`, meta command would be
       `git checkout`.
 
