@@ -46,7 +46,7 @@ RSpec.describe Agen::Finder do
     end
 
     context "histfile contains a tie for entry ranking" do
-      subject { described_class.new(histfile).commands(1) }
+      subject { described_class.new(histfile).commands(limit: 1) }
 
       let(:histfile) do
         Tempfile.open do |f|
@@ -62,7 +62,7 @@ RSpec.describe Agen::Finder do
     end
 
     context "limit is passed in" do
-      subject { described_class.new(histfile).commands(1) }
+      subject { described_class.new(histfile).commands(limit: 1) }
 
       let(:histfile) do
         Tempfile.open do |f|
@@ -73,6 +73,18 @@ RSpec.describe Agen::Finder do
       end
 
       it { is_expected.to eq ["rake standard:fix"] }
+    end
+
+    context "commands are shorter than 6 characters" do
+      let(:histfile) do
+        Tempfile.open do |f|
+          f.puts(": 1619292473:0;bundle exec rake release")
+          f.puts(": 1619291199:0;ls")
+          f
+        end
+      end
+
+      it { is_expected.to eq ["bundle exec rake release"] }
     end
 
     # context "histfile contains very short entries" do

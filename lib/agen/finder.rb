@@ -2,20 +2,31 @@
 
 module Agen
   class Finder
+    LIMIT = 5
+    MIN_CHARS = 6
+
     def initialize(histfile)
       @histfile = histfile
     end
 
-    def commands(limit = 5)
-      File.readlines(@histfile).reverse.each_with_object(Hash.new(0)) do |line, commands|
-        begin
-          cmd = line.split(";").last.delete("\n")
-          if cmd != ""
-            commands[line.split(";").last.delete("\n")] += 1
-          end
-        rescue
-        end
-      end.sort_by { |k, v| -v }.to_h.keys.first(limit)
+    def commands(limit: LIMIT, min_chars: MIN_CHARS)
+      lines
+        .each_with_object(Hash.new(0)) do |line, commands|
+        cmd = line.split(";").last.delete("\n")
+        commands[cmd] += 1 if cmd != ""
+      rescue
+      end
+        .sort_by { |k, v| -v }
+        .to_h
+        .keys
+        .select { |line| line.length >= min_chars }
+        .first(limit)
+    end
+
+    private
+
+    def lines
+      File.readlines(@histfile).reverse
     end
   end
 end
