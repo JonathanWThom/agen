@@ -23,13 +23,11 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/Jonath
 
 ## Roadmap
 
-* CLI will be idempotent, instead of writing the same aliases to your rc file
-    again and again.
+* CLI will let you specify number of aliases you want to create.
 * CLI will let you see proposed aliases and accept/decline them interactively.
    OR, in "auto mode", commands will be added automatically (as in 1). Auto
    should be default?
 * CLI should have helpful output for `-h/--help`.
-* CLI will let you specify number of aliases you want to create.
 * CLI will support any (or most common) shells, and will find history and rc
    file dynamically.
 * CLI will let you specific which history file to read form, and which file to output aliases to.

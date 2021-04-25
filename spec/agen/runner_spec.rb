@@ -103,11 +103,23 @@ RSpec.describe Agen::Runner do
       it { is_expected.to eq File.read("./spec/fixtures/zshrc") }
     end
 
-    # it "does not write duplicate aliases in a single command" do
-    # end
+    context "alias already exists in rcfile" do
+      let(:histfile) do
+        Tempfile.open do |f|
+          f.write(": 1619287607:0;bundle install")
+          f
+        end
+      end
 
-    # it "does not create aliases that already exist as commands on the system" do
-    ## it creates alternatives
-    # end
+      let(:aliaz) { "alias bi=\"bundle install\"" }
+      let(:rcfile) do
+        Tempfile.open do |f|
+          f.write(aliaz)
+          f
+        end
+      end
+
+      it { is_expected.to eq aliaz }
+    end
   end
 end

@@ -14,10 +14,10 @@ module Agen
 
     def run
       commands = Finder.new(histfile).commands
-      aliases = Builder.new(commands).aliases
+      aliases = Builder.new(commands, rcfile).aliases
 
       File.open(rcfile, "a") do |file|
-        puts "Writing aliases to #{rcfile}:"
+        puts "Writing new aliases to #{rcfile}:"
         aliases.each do |al|
           puts al
           file.puts(al)
