@@ -2,7 +2,7 @@
 
 RSpec.describe Agen::Builder do
   describe "#aliases" do
-    subject { described_class.new(commands).aliases }
+    subject { described_class.new(commands, "spec/fixtures/zshrc").aliases }
 
     context "given a single command" do
       let(:commands) { ["git fetch upstream master"] }
@@ -33,9 +33,6 @@ RSpec.describe Agen::Builder do
     end
 
     # context "given multiple commands that could potentially shorten to the same thing" do
-    # end
-
-    # context "given commands that shorten to aliases or commands that already exist" do
     # end
   end
 end
