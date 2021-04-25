@@ -1,8 +1,8 @@
-: 1619282696:0;git status
-: 1619282698:0;git status
-: 1619282707:0;git status
-: 1619282722:0;git status
-: 1619282724:0;git status
+: 1619282696:0;git diff
+: 1619282698:0;git diff
+: 1619282707:0;git diff
+: 1619282722:0;git diff
+: 1619282724:0;git diff
 : 1619282928:0;git rebase -i origin/main
 : 1619282935:0;git rebase -i origin/main
 : 1619282939:0;git rebase -i origin/main
