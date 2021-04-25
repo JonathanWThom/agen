@@ -26,7 +26,10 @@ RSpec.describe Agen::Builder do
       end
     end
 
-    context "commands contain special characters" do
+    context "potential alias already exists on system" do
+      let(:commands) { ["loan shark"] } # ls
+
+      it { is_expected.to eq ["alias lss=\"loan shark\""] }
     end
 
     # context "given multiple commands that could potentially shorten to the same thing" do

@@ -30,7 +30,7 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/Jonath
    - [x] It should not create the same alias for two different commands in the same
        session.
    - [x] It should not create aliases for very short commands.
-2. CLI should not duplicate aliases or commands that already exist on the system.
+~~2. CLI should not duplicate aliases or commands that already exist on the system.~~
 3. CLI will let you see proposed aliases and accept/decline them interactively. Maybe auto should be the default?
    OR, in "auto mode", commands will be added automatically (as in 1).
 4. CLI should have helpful output for `-h/--help`.

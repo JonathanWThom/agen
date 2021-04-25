@@ -19,7 +19,7 @@ module Agen
         .sort_by { |k, v| -v }
         .to_h
         .keys
-        .select { |line| line.length >= min_chars }
+        .select { |cmd| cmd.length >= min_chars }
         .first(limit)
     end
 
