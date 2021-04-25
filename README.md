@@ -1,6 +1,6 @@
 # Agen
 
-[![Ruby](https://github.com/JonathanWThom/agen/actions/workflows/main.yml/badge.svg)](https://github.com/JonathanWThom/agen/actions/workflows/main.yml)
+[![Build](https://github.com/JonathanWThom/agen/actions/workflows/main.yml/badge.svg)](https://github.com/JonathanWThom/agen/actions/workflows/main.yml)
 
 Generate shell aliases based on your most commonly entered commands.
 
