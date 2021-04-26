@@ -1,5 +1,8 @@
 ## [Released]
 
+## [0.1.6] - 2021-04-25
+- Adds ability to specify number of aliases to generate.
+
 ## [0.1.5] - 2021-04-24
 
 - Initial release that anyone should reasonably use.

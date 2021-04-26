@@ -6,10 +6,12 @@ Generate shell aliases based on your most commonly entered commands.
 
 ## Installation & Usage
 
-Install with `gem install agen` and then run `agen` to build your aliases.
+Install with `gem install agen` and then run `agen` to build your aliases. Use
+`agen -h` to see available options.
 
 Right now, this will only work with `zsh`, but support for other shells is on
-the very lengthy todo list.
+the very lengthy todo list. By default, agen reads from `.zsh_history` and
+writes to `.zshrc`.
 
 ## Development
 
@@ -23,7 +25,6 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/Jonath
 
 ## Roadmap
 
-* CLI will let you specify number of aliases you want to create.
 * CLI will let you see proposed aliases and accept/decline them interactively.
    OR, in "auto mode", commands will be added automatically (as in 1). Auto
    should be default?

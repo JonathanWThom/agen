@@ -121,5 +121,29 @@ RSpec.describe Agen::Runner do
 
       it { is_expected.to eq aliaz }
     end
+
+    context "number is passed as option" do
+      let(:limit) { 10 }
+      let(:histfile) { Tempfile.new }
+      let(:execute!) do
+        described_class.new(
+          histfile: histfile.path,
+          rcfile: rcfile.path,
+          number: limit
+        ).run
+      end
+      let(:finder) { instance_double(Agen::Finder) }
+
+      before do
+        allow(Agen::Finder).to receive(:new).and_return(finder)
+        allow(finder).to receive(:commands).and_return([])
+      end
+
+      it "calls Finder with number as limit" do
+        execute!
+
+        expect(finder).to have_received(:commands).with(limit: limit)
+      end
+    end
   end
 end
