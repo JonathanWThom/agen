@@ -6,8 +6,9 @@ Generate shell aliases based on your most commonly entered commands.
 
 ## Installation & Usage
 
-Install with `gem install agen` and then run `agen` to build your aliases. Use
-`agen -h` to see available options.
+Install with `gem install agen` and then run `agen` to build your aliases. Then
+be sure to `source ~/.zshrc` before using the new aliases. Use `agen -h` to see 
+available options. 
 
 Right now, this will only work with `zsh`, but support for other shells is on
 the very lengthy todo list. By default, agen reads from `.zsh_history` and
