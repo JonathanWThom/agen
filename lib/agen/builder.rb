@@ -8,18 +8,22 @@ module Agen
     end
 
     def aliases
+      aliases = []
       @commands.map do |cmd|
         aliaz = cmd.scan(/\b\w/).join
 
         # Is is possibly we could overwrite a command here still? Sure.
         # I will live with it for now.
-        if command_already_exists?(aliaz)
+        if command_already_exists?(aliaz) || aliases.include?(aliaz)
           # We could improve to look more like the original command, but again, works for now.
           aliaz += aliaz[-1]
         end
 
         candidate = "alias #{aliaz}=\"#{cmd}\""
-        candidate if alias_does_not_exist?(candidate)
+        if alias_does_not_exist?(candidate)
+          aliases << aliaz
+          candidate
+        end
       end.compact
     end
 

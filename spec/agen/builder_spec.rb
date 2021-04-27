@@ -32,7 +32,10 @@ RSpec.describe Agen::Builder do
       it { is_expected.to eq ["alias lss=\"loan shark\""] }
     end
 
-    # context "given multiple commands that could potentially shorten to the same thing" do
-    # end
+    context "given multiple commands that could potentially shorten to the same thing" do
+      let(:commands) { ["brew update", "brew upgrade"] }
+
+      it { is_expected.to eq ["alias bu=\"brew update\"", "alias buu=\"brew upgrade\""] }
+    end
   end
 end
