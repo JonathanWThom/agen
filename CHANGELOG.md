@@ -1,7 +1,11 @@
 ## [Released]
 
+## [0.2.1] - 2021-05-01
+- Adds ability to modify aliases before writing them in interactive mode.
+
 ## [0.2.0] - 2021-04-30
-- Fix: Ensures the same aliases is not built for multiple commands in the same run.
+- Adds interactive mode, allowing aliases to be accepted or rejected. On by
+default.
 
 ## [0.1.7] - 2021-04-26
 - Fix: Ensures the same aliases is not built for multiple commands in the same run.
