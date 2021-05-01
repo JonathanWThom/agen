@@ -17,6 +17,10 @@ module Agen
         opts.on("-nNUMBER", "--number=NUMBER", Integer, "Number of aliases to generate") do |n|
           options[:number] = n
         end
+
+        opts.on("-a", "--auto", "Aliases will be generated and applied automatically)") do |a|
+          options[:auto] = a
+        end
       end.parse!
 
       Runner.new(**options).run

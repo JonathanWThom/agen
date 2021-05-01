@@ -13,5 +13,5 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 
-  config.before { allow($stdout).to receive(:puts) }
+  config.before { allow($stdout).to receive(:write) }
 end

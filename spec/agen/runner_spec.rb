@@ -46,7 +46,8 @@ RSpec.describe Agen::Runner do
     let(:execute!) do
       described_class.new(
         histfile: histfile.path,
-        rcfile: rcfile.path
+        rcfile: rcfile.path,
+        auto: true
       ).run
     end
 
@@ -143,6 +144,52 @@ RSpec.describe Agen::Runner do
         execute!
 
         expect(finder).to have_received(:commands).with(limit: limit)
+      end
+    end
+
+    context "auto is left to default of false" do
+      subject do
+        execute!
+        rcfile.open.read
+      end
+
+      let(:rcfile) { Tempfile.new }
+
+      let(:histfile) do
+        Tempfile.open do |f|
+          f.write(": 1619287411:0;git checkout main")
+          f
+        end
+      end
+
+      let(:execute!) do
+        described_class.new(
+          histfile: histfile.path,
+          rcfile: rcfile.path
+        ).run
+      end
+
+      let(:written_alias) { "alias gcm=\"git checkout main\"\n" }
+
+      before { $stdin = StringIO.new(input) }
+      after { $stdin = STDIN }
+
+      context "input is 'y'" do
+        let(:input) { "y" }
+
+        it { is_expected.to eq written_alias }
+      end
+
+      context "input is 'n'" do
+        let(:input) { "n" }
+
+        it { is_expected.to eq "" }
+      end
+
+      context "input is something other than 'n'" do
+        let(:input) { "blah" }
+
+        it { is_expected.to eq written_alias }
       end
     end
   end
