@@ -1,5 +1,8 @@
 ## [Released]
 
+## [0.2.0] - 2021-04-30
+- Fix: Ensures the same aliases is not built for multiple commands in the same run.
+
 ## [0.1.7] - 2021-04-26
 - Fix: Ensures the same aliases is not built for multiple commands in the same run.
 

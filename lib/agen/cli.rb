@@ -18,7 +18,7 @@ module Agen
           options[:number] = n
         end
 
-        opts.on("-a", "--auto", "Aliases will be generated and applied automatically)") do |a|
+        opts.on("-a", "--auto", "Aliases will be generated and applied automatically") do |a|
           options[:auto] = a
         end
       end.parse!

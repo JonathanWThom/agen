@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    agen (0.1.7)
+    agen (0.2.0)
 
 GEM
   remote: https://rubygems.org/
