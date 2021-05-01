@@ -35,10 +35,8 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/Jonath
 
 ## Roadmap
 
-* CLI will support any (or most common) shells, and will find history and rc
-   file dynamically.
+* CLI will support any (or most common) shells, and will find history and rc file dynamically.
 * CLI will let you specific which history file to read from, and which file to output aliases to.
-* CLI will let you interactively modify proposed aliases.
 * CLI will let you "ignore" commands you don't want to alias, forever.
 * CLI will let you specify "meta" vs "full" commands.
   - Full command would be `git checkout branch-name`, meta command would be
