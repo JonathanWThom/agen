@@ -4,6 +4,9 @@
 
 Generate shell aliases based on your most commonly entered commands.
 
+https://user-images.githubusercontent.com/22665228/116796045-5e5a8280-aa8e-11eb-8b4c-4408a252c143.mov
+
+
 ## Installation & Usage
 
 Install with `gem install agen` and then run `agen` to build your aliases. Then
