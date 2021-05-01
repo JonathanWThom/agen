@@ -2,7 +2,7 @@
 
 module Agen
   class Builder
-    def initialize(commands, rcfile = Runner::DEFAULT_RCFILE)
+    def initialize(commands = [], rcfile = Runner::DEFAULT_RCFILE)
       @commands = commands
       @rcfile = rcfile
     end
@@ -19,12 +19,16 @@ module Agen
           aliaz += aliaz[-1]
         end
 
-        candidate = "alias #{aliaz}=\"#{cmd}\""
+        candidate = construct_alias(aliaz, cmd)
         if alias_does_not_exist?(candidate)
           aliases << aliaz
-          candidate
+          {alias: aliaz, full_alias: candidate, command: cmd}
         end
       end.compact
+    end
+
+    def construct_alias(aliaz, cmd)
+      "alias #{aliaz}=\"#{cmd}\""
     end
 
     private

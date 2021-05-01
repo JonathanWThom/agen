@@ -22,13 +22,15 @@ module Agen
 
     def run
       commands = Finder.new(histfile).commands(limit: @number)
-      aliases = Builder.new(commands, rcfile).aliases
+      @builder = Builder.new(commands, rcfile)
+      aliases = builder.aliases
 
+      # TODO: This could be its own class too
       File.open(rcfile, "a") do |file|
-        puts "Writing new aliases to #{rcfile}:"
+        puts "Writing new aliases to #{rcfile}:\n\n"
         aliases.each do |al|
           if auto
-            write_auto(file, al)
+            write_auto(file, al[:full_alias])
           else
             write_interactive(file, al)
           end
@@ -38,25 +40,40 @@ module Agen
 
     private
 
-    attr_reader :auto
+    attr_reader :auto, :builder
 
-    def write_auto(file, aliaz)
-      puts aliaz
-      file.puts(aliaz)
+    def write_auto(file, full_alias)
+      puts full_alias
+      file.puts(full_alias)
     end
 
     def write_interactive(file, aliaz)
-      puts "Proposed alias: #{aliaz}"
-      print "Accept? [n to reject, any other key to accept]: "
+      puts "Proposed alias: #{aliaz[:full_alias]}"
+      print "Accept? [n to reject, m to modify alias, any other key to accept]: "
       response = gets.chomp
-      if response != "n"
-        file.puts(aliaz)
-        puts "Alias written"
-      else
+      case response
+      when "n"
         puts "Alias skipped"
+      when "m"
+        modify_alias(file, aliaz)
+      else
+        file.puts(aliaz[:full_alias])
+        puts "Alias written"
       end
 
       puts
+    end
+
+    def modify_alias(file, aliaz)
+      print "Enter new alias [replacing #{aliaz[:alias]}]: "
+      replacement = gets.chomp
+      if replacement == ""
+        modify_alias(file, aliaz)
+        return
+      end
+
+      file.puts(builder.construct_alias(replacement, aliaz[:command]))
+      puts "Alias written"
     end
   end
 end

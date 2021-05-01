@@ -186,7 +186,13 @@ RSpec.describe Agen::Runner do
         it { is_expected.to eq "" }
       end
 
-      context "input is something other than 'n'" do
+      context "input is 'm'" do
+        let(:input) { "m\nhello" }
+
+        it { is_expected.to eq "alias hello=\"git checkout main\"\n" }
+      end
+
+      context "input is something other than 'n' or 'm'" do
         let(:input) { "blah" }
 
         it { is_expected.to eq written_alias }
