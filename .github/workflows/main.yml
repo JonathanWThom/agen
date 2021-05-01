@@ -12,5 +12,7 @@ jobs:
       with:
         ruby-version: 3.0.1
         bundler-cache: true
-    - name: Run the default task
+    - name: Lint
+      run: bundle exec rake standard
+    - name: Test
       run: bundle exec rake
