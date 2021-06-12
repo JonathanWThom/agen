@@ -2,8 +2,8 @@
 
 module Agen
   class Runner
-    DEFAULT_HISTFILE = "#{Dir.home}/.zsh_history"
-    DEFAULT_RCFILE = "#{Dir.home}/.zshrc"
+    DEFAULT_HISTFILE = ZshOptions::HISTFILE
+    DEFAULT_RCFILE = ZshOptions::RCFILE
     DEFAULT_NUMBER = 5
 
     attr_reader :histfile, :rcfile

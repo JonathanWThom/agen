@@ -14,7 +14,8 @@ module Agen
         .each_with_object(Hash.new(0)) do |line, commands|
         cmd = line.split(";").last.delete("\n")
         commands[cmd] += 1 if cmd != ""
-      rescue
+      rescue => e
+        puts e
       end
         .sort_by { |k, v| -v }
         .to_h
