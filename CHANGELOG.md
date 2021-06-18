@@ -1,6 +1,6 @@
 ## [Released]
 
-## [0.3] - 2021-06-17
+## [0.3.1] - 2021-06-17
 - Adds support for bash shell.
 - Adds ability to pass custom rcfile and histfile options.
 
