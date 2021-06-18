@@ -22,7 +22,13 @@ RSpec.describe Agen::CLI do
       it "passes option to Agen::Runner" do
         described_class.new.run
 
-        expect(Agen::Runner).to have_received(:new).with(number: 10)
+        expect(
+          Agen::Runner
+        ).to have_received(:new).with(
+          number: 10,
+          histfile: Agen::ZshOptions::HISTFILE,
+          rcfile: Agen::ZshOptions::RCFILE,
+        )
         expect(runner).to have_received(:run)
       end
     end
@@ -33,7 +39,13 @@ RSpec.describe Agen::CLI do
       it "passes option to Agen::Runner" do
         described_class.new.run
 
-        expect(Agen::Runner).to have_received(:new).with(auto: true)
+        expect(
+          Agen::Runner
+        ).to have_received(:new).with(
+          auto: true,
+          histfile: Agen::ZshOptions::HISTFILE,
+          rcfile: Agen::ZshOptions::RCFILE,
+        )
         expect(runner).to have_received(:run)
       end
     end
