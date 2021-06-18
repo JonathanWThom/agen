@@ -6,6 +6,7 @@ RSpec.describe Agen::CLI do
 
     before do
       ARGV.clear
+      allow(ENV).to receive(:[]).and_return("/usr/bin/zsh")
       allow(Agen::Runner).to receive(:new).and_return(runner)
       allow(runner).to receive(:run)
     end
