@@ -25,15 +25,13 @@ module Agen
     end
 
     def opts_klass
-      @_opts_klass ||= begin
-        if bash?
-          BashOptions
-        elsif zsh?
-          ZshOptions
-        else
-          BaseOptions
-        end.new(@options)
-      end
+      @_opts_klass ||= if bash?
+        BashOptions
+      elsif zsh?
+        ZshOptions
+      else
+        BaseOptions
+      end.new(@options)
     end
 
     def shell

@@ -32,7 +32,7 @@ module Agen
       end.parse!
 
       options = Shell.new(options).add_options
-      return if !options
+      return unless options
 
       Runner.new(**options).run
     end

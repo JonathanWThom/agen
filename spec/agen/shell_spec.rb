@@ -8,13 +8,13 @@ RSpec.describe Agen::Shell do
     let(:default_bash_options) do
       {
         histfile: Agen::BashOptions::HISTFILE,
-        rcfile: Agen::BashOptions::RCFILE,
+        rcfile: Agen::BashOptions::RCFILE
       }
     end
     let(:default_zsh_options) do
       {
         histfile: Agen::ZshOptions::HISTFILE,
-        rcfile: Agen::ZshOptions::RCFILE,
+        rcfile: Agen::ZshOptions::RCFILE
       }
     end
 
@@ -29,7 +29,7 @@ RSpec.describe Agen::Shell do
 
       context "histfile is specified" do
         let(:path) { "/weird/history_path" }
-        let(:options) { { histfile: path } }
+        let(:options) { {histfile: path} }
 
         it { is_expected.to eq default_zsh_options.merge(histfile: path) }
       end
@@ -40,7 +40,7 @@ RSpec.describe Agen::Shell do
 
       context "rcfile is specified" do
         let(:path) { "/weird/.rcfile_path" }
-        let(:options) { { rcfile: path } }
+        let(:options) { {rcfile: path} }
 
         it { is_expected.to eq default_zsh_options.merge(rcfile: path) }
       end
@@ -57,7 +57,7 @@ RSpec.describe Agen::Shell do
 
       context "histfile is specified" do
         let(:path) { "/weird/history_path" }
-        let(:options) { { histfile: path } }
+        let(:options) { {histfile: path} }
 
         it { is_expected.to eq default_bash_options.merge(histfile: path) }
       end
@@ -68,7 +68,7 @@ RSpec.describe Agen::Shell do
 
       context "rcfile is specified" do
         let(:path) { "/weird/.rcfile_path" }
-        let(:options) { { rcfile: path } }
+        let(:options) { {rcfile: path} }
 
         it { is_expected.to eq default_bash_options.merge(rcfile: path) }
       end
@@ -90,9 +90,9 @@ RSpec.describe Agen::Shell do
       context "histfile and rcfile are both specified" do
         let(:histfile) { "/weird/history_path" }
         let(:rcfile) { "/weird/.rcfile_path" }
-        let(:options) { { histfile: histfile, rcfile: rcfile } }
+        let(:options) { {histfile: histfile, rcfile: rcfile} }
 
-        it { is_expected.to eq({ histfile: histfile, rcfile: rcfile}) }
+        it { is_expected.to eq({histfile: histfile, rcfile: rcfile}) }
       end
     end
   end

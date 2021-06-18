@@ -27,7 +27,7 @@ RSpec.describe Agen::CLI do
         ).to have_received(:new).with(
           number: 10,
           histfile: Agen::ZshOptions::HISTFILE,
-          rcfile: Agen::ZshOptions::RCFILE,
+          rcfile: Agen::ZshOptions::RCFILE
         )
         expect(runner).to have_received(:run)
       end
@@ -44,7 +44,7 @@ RSpec.describe Agen::CLI do
         ).to have_received(:new).with(
           auto: true,
           histfile: Agen::ZshOptions::HISTFILE,
-          rcfile: Agen::ZshOptions::RCFILE,
+          rcfile: Agen::ZshOptions::RCFILE
         )
         expect(runner).to have_received(:run)
       end
@@ -62,7 +62,7 @@ RSpec.describe Agen::CLI do
           Agen::Runner
         ).to have_received(:new).with(
           histfile: histfile,
-          rcfile: Agen::ZshOptions::RCFILE,
+          rcfile: Agen::ZshOptions::RCFILE
         )
         expect(runner).to have_received(:run)
       end
@@ -80,7 +80,7 @@ RSpec.describe Agen::CLI do
           Agen::Runner
         ).to have_received(:new).with(
           histfile: Agen::ZshOptions::HISTFILE,
-          rcfile: rcfile,
+          rcfile: rcfile
         )
         expect(runner).to have_received(:run)
       end
