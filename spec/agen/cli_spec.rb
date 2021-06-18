@@ -49,5 +49,41 @@ RSpec.describe Agen::CLI do
         expect(runner).to have_received(:run)
       end
     end
+
+    context "histfile option is passed" do
+      let(:histfile) { Agen::BashOptions::HISTFILE }
+
+      before { ARGV.replace(["-h", histfile]) }
+
+      it "passes option to Agen::Runner" do
+        described_class.new.run
+
+        expect(
+          Agen::Runner
+        ).to have_received(:new).with(
+          histfile: histfile,
+          rcfile: Agen::ZshOptions::RCFILE,
+        )
+        expect(runner).to have_received(:run)
+      end
+    end
+
+    context "rcfile option is passed" do
+      let(:rcfile) { Agen::BashOptions::RCFILE }
+
+      before { ARGV.replace(["-r", rcfile]) }
+
+      it "passes option to Agen::Runner" do
+        described_class.new.run
+
+        expect(
+          Agen::Runner
+        ).to have_received(:new).with(
+          histfile: Agen::ZshOptions::HISTFILE,
+          rcfile: rcfile,
+        )
+        expect(runner).to have_received(:run)
+      end
+    end
   end
 end
