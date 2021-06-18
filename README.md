@@ -17,10 +17,11 @@ available options.
 Usage: agen [options]
     -n, --number=NUMBER              Number of aliases to generate
     -a, --auto                       Aliases will be generated and applied automatically
+    -r, --rcfile=RCFILE              Path to shell rc file
+    -h, --histfile=HISTFILE          Path to shell history file
 ```
 
-Right now, this will only work with `zsh`, but support for other shells is on
-the very lengthy todo list. By default, agen reads from `.zsh_history` and
+Right now, this will only work with `zsh` or `bash`, but you can specify unique shell config files using the `-r` and `-h` options (though there is no guarantee that your history file will be read properly). By default, agen reads from `.zsh_history` and
 writes to `.zshrc`.
 
 ## Development
@@ -35,12 +36,10 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/Jonath
 
 ## Roadmap
 
-* CLI will support any (or most common) shells, and will find history and rc file dynamically.
-* CLI will let you specific which history file to read from, and which file to output aliases to.
 * CLI will let you "ignore" commands you don't want to alias, forever.
+* CLI will raise user friendly errors if you specify shell configuration files that don't exist.
 * CLI will let you specify "meta" vs "full" commands.
-  - Full command would be `git checkout branch-name`, meta command would be
-      `git checkout`.
+  - Full command would be `git checkout branch-name`, meta command would be `git checkout`.
 
 ## License
 

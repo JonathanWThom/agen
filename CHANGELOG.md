@@ -1,5 +1,9 @@
 ## [Released]
 
+## [0.3] - 2021-06-17
+- Adds support for bash shell.
+- Adds ability to pass custom rcfile and histfile options.
+
 ## [0.2.1] - 2021-05-01
 - Adds ability to modify aliases before writing them in interactive mode.
 
