@@ -7,22 +7,18 @@ module Agen
     end
 
     def add_options
-      if !options[:histfile]
-        options = opts_klass.set_histfile
+      if !@options[:histfile]
+        @options = opts_klass.set_histfile
       end
 
-      if options && !options[:rcfile]
-        options = opts_klass.set_rcfile
+      if @options && !@options[:rcfile]
+        @options = opts_klass.set_rcfile
       end
 
-      # make sure shell files can be read from?
-
-      options
+      @options
     end
 
     private
-
-    attr_reader :options
 
     def bash?
       @_bash ||= shell.match?(/bash/)
@@ -36,7 +32,7 @@ module Agen
           ZshOptions
         else
           BaseOptions
-        end.new(options)
+        end.new(@options)
       end
     end
 
