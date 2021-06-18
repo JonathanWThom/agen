@@ -15,10 +15,11 @@ available options.
 
 ```
 Usage: agen [options]
+    -v, --version                    Version
     -n, --number=NUMBER              Number of aliases to generate
     -a, --auto                       Aliases will be generated and applied automatically
     -r, --rcfile=RCFILE              Path to shell rc file
-    -h, --histfile=HISTFILE          Path to shell history file
+    -s, --shell-history=HISTFILE     Path to shell history file
 ```
 
 Right now, this will only work with `zsh` or `bash`, but you can specify unique shell config files using the `-r` and `-h` options (though there is no guarantee that your history file will be read properly). By default, agen reads from `.zsh_history` and

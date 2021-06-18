@@ -14,6 +14,11 @@ module Agen
       OptionParser.new do |opts|
         opts.banner = "Usage: agen [options]"
 
+        opts.on("-v", "--version", String, "Version") do |v|
+          puts Agen::VERSION
+          return false
+        end
+
         opts.on("-nNUMBER", "--number=NUMBER", Integer, "Number of aliases to generate") do |n|
           options[:number] = n
         end
@@ -26,8 +31,8 @@ module Agen
           options[:rcfile] = r
         end
 
-        opts.on("-hHISTFILE", "--histfile=HISTFILE", String, "Path to shell history file") do |h|
-          options[:histfile] = h
+        opts.on("-sHISTFILE", "--shell-history=HISTFILE", String, "Path to shell history file") do |s|
+          options[:histfile] = s
         end
       end.parse!
 

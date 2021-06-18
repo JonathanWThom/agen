@@ -54,7 +54,7 @@ RSpec.describe Agen::CLI do
     context "histfile option is passed" do
       let(:histfile) { Agen::BashOptions::HISTFILE }
 
-      before { ARGV.replace(["-h", histfile]) }
+      before { ARGV.replace(["-s", histfile]) }
 
       it "passes option to Agen::Runner" do
         described_class.new.run
