@@ -2,7 +2,11 @@
 
 RSpec.describe Agen::Finder do
   describe "#commands" do
-    subject { described_class.new(histfile.path).commands }
+    subject do
+      described_class.new(histfile.path, config_file.path).commands
+    end
+
+    let(:config_file) { Tempfile.new }
 
     context "histfile contains nothing" do
       let(:histfile) { Tempfile.new }
@@ -85,6 +89,24 @@ RSpec.describe Agen::Finder do
       end
 
       it { is_expected.to eq ["bundle exec rake release"] }
+    end
+
+    context "command has been previously ignored" do
+      let(:config_file) do
+        Tempfile.open do |f|
+          f.puts("cat ~/.zsh_history")
+          f
+        end
+      end
+
+      let(:histfile) do
+        Tempfile.open do |f|
+          f.puts(": 1619292473:0;cat ~/.zsh_history")
+          f
+        end
+      end
+
+      it { is_expected.to be_empty }
     end
   end
 end

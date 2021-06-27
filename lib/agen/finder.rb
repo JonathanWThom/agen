@@ -5,8 +5,9 @@ module Agen
     LIMIT = 5
     MIN_CHARS = 6
 
-    def initialize(histfile)
+    def initialize(histfile, config_file = Runner::CONFIG_FILE)
       @histfile = histfile
+      @config_file = config_file
     end
 
     def commands(limit: LIMIT, min_chars: MIN_CHARS)
@@ -27,8 +28,10 @@ module Agen
 
     private
 
+    attr_reader :config_file
+
     def ignored?(cmd)
-      File.readlines(Agen::Runner::CONFIG_FILE).detect do |line|
+      File.readlines(config_file).detect do |line|
         line.delete("\n") == cmd
       end
     rescue Errno::ENOENT
