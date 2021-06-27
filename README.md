@@ -25,6 +25,9 @@ Usage: agen [options]
 Right now, this will only work with `zsh` or `bash`, but you can specify unique shell config files using the `-r` and `-h` options (though there is no guarantee that your history file will be read properly). By default, agen reads from `.zsh_history` and
 writes to `.zshrc`.
 
+When editing aliases interactively (which is the default), any commands that are
+ignored (via the `i` command) will be stored in the ~/.agen configuration file.
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
@@ -37,10 +40,10 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/Jonath
 
 ## Roadmap
 
-* CLI will let you "ignore" commands you don't want to alias, forever.
 * CLI will raise user friendly errors if you specify shell configuration files that don't exist.
 * CLI will let you specify "meta" vs "full" commands.
   - Full command would be `git checkout branch-name`, meta command would be `git checkout`.
+* Update video in README to reflect `i` command.
 
 ## License
 
