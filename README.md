@@ -4,8 +4,7 @@
 
 Generate shell aliases based on your most commonly entered commands.
 
-https://user-images.githubusercontent.com/22665228/116796045-5e5a8280-aa8e-11eb-8b4c-4408a252c143.mov
-
+https://user-images.githubusercontent.com/22665228/123534086-48082600-d6cf-11eb-970c-1d46f44068ff.mov
 
 ## Installation & Usage
 
@@ -43,7 +42,6 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/Jonath
 * CLI will raise user friendly errors if you specify shell configuration files that don't exist.
 * CLI will let you specify "meta" vs "full" commands.
   - Full command would be `git checkout branch-name`, meta command would be `git checkout`.
-* Update video in README to reflect `i` command.
 
 ## License
 
