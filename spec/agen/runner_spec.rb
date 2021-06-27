@@ -162,10 +162,13 @@ RSpec.describe Agen::Runner do
         end
       end
 
+      let(:config_file) { Tempfile.new }
+
       let(:execute!) do
         described_class.new(
           histfile: histfile.path,
-          rcfile: rcfile.path
+          rcfile: rcfile.path,
+          config_file: config_file.path
         ).run
       end
 
@@ -192,7 +195,22 @@ RSpec.describe Agen::Runner do
         it { is_expected.to eq "alias hello=\"git checkout main\"\n" }
       end
 
-      context "input is something other than 'n' or 'm'" do
+      context "input is 'i'" do
+        let(:input) { "i" }
+
+        it { is_expected.to eq "" }
+
+        context "it writes ignored command to config file" do
+          subject do
+            execute!
+            config_file.open.read
+          end
+
+          it { is_expected.to eq "git checkout main\n" }
+        end
+      end
+
+      context "input is something other than 'n', 'm', or 'i'" do
         let(:input) { "blah" }
 
         it { is_expected.to eq written_alias }

@@ -13,12 +13,14 @@ module Agen
       histfile: DEFAULT_HISTFILE,
       rcfile: DEFAULT_RCFILE,
       number: DEFAULT_NUMBER,
-      auto: false
+      auto: false,
+      config_file: CONFIG_FILE
     )
       @histfile = histfile
       @rcfile = rcfile
       @number = number
       @auto = auto
+      @config_file = config_file
     end
 
     def run
@@ -41,7 +43,7 @@ module Agen
 
     private
 
-    attr_reader :auto, :builder
+    attr_reader :auto, :builder, :config_file
 
     def write_auto(file, full_alias)
       puts full_alias
@@ -69,7 +71,7 @@ module Agen
 
     def ignore_alias(aliaz)
       command = aliaz[:command]
-      File.open(CONFIG_FILE, "a") { |f| f.puts(command) }
+      File.open(config_file, "a") { |f| f.puts(command) }
       puts "Ignoring command '#{command}' forever"
     end
 

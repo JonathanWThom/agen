@@ -86,15 +86,5 @@ RSpec.describe Agen::Finder do
 
       it { is_expected.to eq ["bundle exec rake release"] }
     end
-
-    # context "hitfile contains aliases" do
-    ## does not create alias from alias, unless multiple
-    # end
-
-    # context "histfile contains more entries than desired number of results" do
-    # end
-
-    # context "histfile contains legitimate commands with ; in them" do
-    # end
   end
 end
