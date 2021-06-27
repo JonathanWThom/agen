@@ -21,10 +21,19 @@ module Agen
         .to_h
         .keys
         .select { |cmd| cmd.length >= min_chars }
+        .select { |cmd| !ignored?(cmd) }
         .first(limit)
     end
 
     private
+
+    def ignored?(cmd)
+      File.readlines(Agen::Runner::CONFIG_FILE).detect do |line|
+        line.delete("\n") == cmd
+      end
+    rescue Errno::ENOENT
+      # User hasn't ignored anything yet, so doesn't have a config file
+    end
 
     def lines
       File.readlines(@histfile).reverse
