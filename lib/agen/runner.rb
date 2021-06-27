@@ -2,6 +2,7 @@
 
 module Agen
   class Runner
+    CONFIG_FILE = "#{Dir.home}/.agen"
     DEFAULT_HISTFILE = ZshOptions::HISTFILE
     DEFAULT_RCFILE = ZshOptions::RCFILE
     DEFAULT_NUMBER = 5
@@ -49,19 +50,27 @@ module Agen
 
     def write_interactive(file, aliaz)
       puts "Proposed alias: #{aliaz[:full_alias]}"
-      print "Accept? [n to reject, m to modify alias, any other key to accept]: "
+      print "Accept? [n to reject, m to modify alias, i to ignore forever, any other key to accept]: "
       response = gets.chomp
       case response
       when "n"
         puts "Alias skipped"
       when "m"
         modify_alias(file, aliaz)
+      when "i"
+        ignore_alias(aliaz)
       else
         file.puts(aliaz[:full_alias])
         puts "Alias written"
       end
 
       puts
+    end
+
+    def ignore_alias(aliaz)
+      command = aliaz[:command]
+      File.open(CONFIG_FILE, "a") { |f| f.puts(command) }
+      puts "Ignoring command '#{command}' forever"
     end
 
     def modify_alias(file, aliaz)
